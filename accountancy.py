@@ -62,7 +62,7 @@ def add_new_doc(doc_list, dir):
     else:
         doc_list.append(new_user)
         dir[shelf].append(value[1])
-        print(f'Успешно помещено на полку {shelf}')
+        return(f'Успешно помещено на полку {shelf}')
     return (doc_list, dir)
 
 

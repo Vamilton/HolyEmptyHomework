@@ -17,7 +17,7 @@ fixture_02 = [
 ]
 
 fixture_03 = [
-    (),
+    ('passport', '101202', 'Максим', '1'),
 ]
 
 class MyTestCase(unittest.TestCase):
@@ -35,10 +35,10 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(all_documents(documents, directories), ['passport "2207 876234" "Василий Гупкин"', 'invoice "11-2" "Геннадий Покемонов"', 'insurance "10006" "Аристарх Павлов"'])
 
 
-    # @parameterized.expand(fixture_03)
-    # def test_show_shelf_by_doc(self, number, shelf):
-    #     with patch('accountancy.input', return_value=number) as _raw_input:
-    #         self.assertEqual(show_shelf_by_doc(documents, directories), shelf)
+    @patch('builtins.input')
+    def test_add_new_doc1(self, m_input):
+        m_input.side_effect = ['passport', '101202', 'Максим', '1']
+        self.assertEqual(add_new_doc(documents, directories), 'Успешно помещено на полку 1')
 
 
             
