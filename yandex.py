@@ -34,5 +34,4 @@ class YaUploader:
         its_url = f'https://cloud-api.yandex.net/v1/disk/resources?path={folder_name}'
         response = requests.delete(its_url, headers=self.header)
 
-ya = YaUploader()
-ya.del_folder('NewFolder')
+

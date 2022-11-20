@@ -1,12 +1,11 @@
 import unittest
 from yandex import YaUploader
 from parameterized import parameterized
-from unittest.mock import patch
-from unittest import mock
+
 
 fixture = [
     ('NewFolder', 'Ok'),
-    ('Документы', 'Такая папка существует') #используйте тут название уже существующей папки
+    ('NewFolder', 'Такая папка существует')
 ]
 
 class MyTestCase(unittest.TestCase):
@@ -16,7 +15,10 @@ class MyTestCase(unittest.TestCase):
         self.ya = YaUploader()
         self.assertEqual(self.ya.new_folder(name), resp)
 
-    def teardown(self):
+    @classmethod
+    def tearDownClass(self):
+        self.ya = YaUploader()
+        self.ya.del_folder('NewFolder')
 
 
 if __name__ == '__main__':
